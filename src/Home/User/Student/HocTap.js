@@ -117,7 +117,6 @@ function HocTap() {
       });
   }
 
-
 function updateTableDataInProgress(inProgressData) {
   // Create a new array to store the table rows
   const tableRows = [];
@@ -126,7 +125,7 @@ function updateTableDataInProgress(inProgressData) {
   if (inProgressData&&Array.isArray(inProgressData)) {
     inProgressData.forEach(course => {
       // Create a new row object for each course
-      const roundedFinalGrade = parseFloat((course.finalGrade).toFixed(2));
+      const roundedFinalGrade = typeof course.finalGrade === 'number' ? course.finalGrade.toFixed(2) : null;
       let tinChi; 
       if (course.courseLevel==="BEGINNER") tinChi="3"
       else{
