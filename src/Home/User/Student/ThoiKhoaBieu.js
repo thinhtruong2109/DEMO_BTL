@@ -1,20 +1,15 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { useState, useEffect,useRef } from 'react';
-import LoginIcon from '@mui/icons-material/Login';
-import SchoolIcon from '@mui/icons-material/School';
-import TextField from '@mui/material/TextField';
 import {useNavigate}  from 'react-router-dom';
 import { styled} from '@mui/material';
 import axios from 'axios'; 
 import * as xlsx from 'xlsx';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Grid from '@mui/material/Grid';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -23,9 +18,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Tab } from '@mui/base';
 import GetAppIcon from '@mui/icons-material/GetApp';
-import StarField from './star';
 import StarExplosion from './Starbg'
 
 function ThoiKhoaBieu() {
@@ -169,6 +162,7 @@ function updateTableData(weeklyScheduleData) {
       }
       console.log(course.courseName)
       const row = {
+        TeacherID: course.teacherId, 
         MaMH: course.courseId,
         TenMonHoc: course.courseName,
         Level: course.courseLevel,
@@ -254,7 +248,8 @@ function updateTableData(weeklyScheduleData) {
           </div>
 
 
-
+          {StudentUserID ? (
+<>
         <AppBar position='static'>
             <Toolbar  className='custom-toolbar' sx={{ bgcolor: 'transparent' ,}}>
             <img src="/Hogwarts.png" alt="Icon" width="80" height="50" />
@@ -279,8 +274,7 @@ function updateTableData(weeklyScheduleData) {
                 </Stack>
             </Toolbar>
         </AppBar>
-        {StudentUserID ? (
-<>
+
       <Typography variant='h1' gutterBottom></Typography>
       <Stack direction='row'>
         <Box style = {{
@@ -351,6 +345,7 @@ function updateTableData(weeklyScheduleData) {
               <TableRow>
                 <TableCell align='center' style={{ fontWeight: "bold",borderRight: "1px solid rgba(224, 224, 224, 1)" }} >Mã MH</TableCell>
                 <TableCell align='center' style={{ fontWeight: "bold",borderRight: "1px solid rgba(224, 224, 224, 1)" }}>Tên môn học</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold",borderRight: "1px solid rgba(224, 224, 224, 1)" }}>ID giảng viên</TableCell>
                 <TableCell align='center' style={{ fontWeight: "bold",borderRight: "1px solid rgba(224, 224, 224, 1)" }}>Tín chỉ</TableCell>
                 <TableCell align='center' style={{ fontWeight: "bold",borderRight: "1px solid rgba(224, 224, 224, 1)" }}>Trình độ</TableCell>
                 <TableCell align='center' style={{ fontWeight: "bold",borderRight: "1px solid rgba(224, 224, 224, 1)" }}>Thứ</TableCell>
@@ -365,6 +360,7 @@ function updateTableData(weeklyScheduleData) {
                 <TableRow key={row.id}>
                   <TableCell align='center' style={{width: '10px' ,borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.MaMH}</TableCell>
                   <TableCell style={{width: '230px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.TenMonHoc}</TableCell>
+                  <TableCell align='center' style={{width: '50px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.TeacherID}</TableCell>
                   <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.TinChi}</TableCell>
                   <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.Level}</TableCell>
                   <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)" }}>{row.Thu}</TableCell>

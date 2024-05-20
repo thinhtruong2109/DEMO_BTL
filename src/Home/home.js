@@ -7,7 +7,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { useState, useEffect } from 'react';
 import LoginIcon from '@mui/icons-material/Login';
-import SchoolIcon from '@mui/icons-material/School';
 import TextField from '@mui/material/TextField';
 import {useNavigate}  from 'react-router-dom';
 import { styled} from '@mui/material';

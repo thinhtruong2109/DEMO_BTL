@@ -186,7 +186,7 @@ function StudentInFo() {
         <Grid item xs={6}>
           <Box style = {{
             width: '55vw', // Chiếm 70% chiều rộng của viewport
-            height: '65vh', // Chiếm 50% chiều cao của viewport
+            height: '600px', // Chiếm 50% chiều cao của viewport
             fontSize: '1.0rem',
             color: '#380B61',
             backgroundImage: 'url("/gradient8.jpg")',
@@ -289,7 +289,7 @@ function StudentInFo() {
         <Grid item xs={6}>
         <Box style = {{
             width: '30vw', // Chiếm 30% chiều rộng của viewport
-            height: '30vh', // Chiệm 25% chiều cao của viewport
+            height: '250px', // Chiệm 25% chiều cao của viewport
             fontSize: '1.0rem',
             color: '#380B61',
             backgroundImage: 'url("/gradient8.jpg")',
@@ -318,7 +318,7 @@ function StudentInFo() {
           </Box>
           <Box style = {{
             width: '30vw', // Chiếm 30% chiều rộng của viewport
-            height: '30vh', // Chiệm 25% chiều cao của viewport
+            height: '250px', // Chiệm 25% chiều cao của viewport
             fontSize: '1.0rem',
             color: '#380B61',
             backgroundImage: 'url("/gradient8.jpg")',

@@ -5,25 +5,14 @@ import Typography from '@mui/material/Typography'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { useState, useEffect,useRef } from 'react';
-import LoginIcon from '@mui/icons-material/Login';
-import SchoolIcon from '@mui/icons-material/School';
 import TextField from '@mui/material/TextField';
 import {useNavigate}  from 'react-router-dom';
 import { styled} from '@mui/material';
 import axios from 'axios'; 
-import Grid from '@mui/material/Grid';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import format from 'date-fns/format';
-import parse from 'date-fns/parse';
-import startOfWeek from 'date-fns/startOfWeek';
-import getDay from 'date-fns/getDay';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 // import StudentInfo from './StudentInfo';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Card from '@mui/material/Card';
-import  CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import StarExplosion from './Starbg'
 import { useLocation } from 'react-router-dom';
 import Table from '@mui/material/Table';
@@ -120,11 +109,17 @@ function DanhSachThanhVien()
       setIsFormVisible(true);
     };
 
+
+
+
     
     const [ Notification, setNotification] = useState(false);
 
     const handleSuccessClose = () => {
       setNotification(false);
+     fetchThanhVien();
+      
+
     };
     function NhapDiemChoStudent()
     {
@@ -273,22 +268,31 @@ function DanhSachThanhVien()
     const [dummyData, setDummyData] = useState([]);
     const fetchThanhVien = async() => {
       try {
-        console.log(studentIds);
+        
         const tableRows = [];
         for (let i = 0; i < studentIdsArray.length; i ++) {
             const studentId = studentIdsArray[i];
-            const response = await axios.get(`https://school-system-nwgo.onrender.com/student/studentId/${studentId}`);
-            const { data } = response.data;
+            // const response = await axios.get(`https://school-system-nwgo.onrender.com/student/studentId/${studentId}`);
+            const response2 = await axios.get(`https://school-system-nwgo.onrender.com/sheetmark/student_courseclass?studentId=${studentId}&courseClassId=${IdMonHoc}`);
+            const {data } = response2.data;
+          
             const row = {
-              ID: data.id,
-              Name: data.name,
-              Email: data.email,
-              PhoneNumber: data.phoneNumber
+              ID: data[0].studentId,
+              Name: data[0].studentName,
+              assignmentScore: data[0].assignmentScore,
+              projectScore: data[0].projectScore,
+              midTermScore: data[0].midTermScore,
+              finalExamScore: data[0].finalExamScore,
+              finalGrade: data[0].finalGrade,
             };
+            console.log("123:  .",row.assignmentScore)
             tableRows.push(row);
           }
           setDummyData(tableRows);
-      } catch (error) {
+      } 
+      
+      
+      catch (error) {
         console.error('Error fetching student data:', error);
         alert('fail');
       }
@@ -446,9 +450,14 @@ function DanhSachThanhVien()
               <TableRow>
                 <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>ID</TableCell>
                 <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "200px" }}>Tên</TableCell>
-                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Email</TableCell>
-                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Số điện thoại</TableCell>
-                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Điểm</TableCell>
+                {/* <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Email</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Số điện thoại</TableCell> */}
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Assignment</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Project</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>MidTerm</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Final</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Average</TableCell>
+                <TableCell align='center' style={{ fontWeight: "bold", borderRight: "1px solid rgba(224, 224, 224, 1)", width: "100px" }}>Nhập điểm</TableCell>
                 {/* Thêm các TableCell khác cho các cột */}
               </TableRow>
             </TableHead>
@@ -457,9 +466,12 @@ function DanhSachThanhVien()
               {dummyData.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell align='center' style={{width: '10px' ,borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.ID}</TableCell>
-                  <TableCell style={{width: '230px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.Name}</TableCell>
-                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.Email}</TableCell>
-                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.PhoneNumber}</TableCell>
+                  <TableCell style={{width: '130px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.Name}</TableCell>
+                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.assignmentScore}</TableCell>
+                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.projectScore}</TableCell>
+                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.midTermScore}</TableCell>
+                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.finalExamScore}</TableCell>
+                  <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.finalGrade}</TableCell>
                   <TableCell align='center' style={{width: '20px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>
                      <RegistButton style={{fontSize:'0.9rem'}} onClick={() => handleNhapDiem(row.ID)}>Nhập điểm</RegistButton>
                     </TableCell>

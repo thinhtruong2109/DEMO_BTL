@@ -544,7 +544,7 @@ function updateTableData(response) {
                   <TableCell align='center' style={{width: '10px' ,borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.MaMH}</TableCell>
                   <TableCell style={{width: '230px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.TenMonHoc}</TableCell>
                   <TableCell style={{width: '530px',borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{row.classDays}</TableCell>
-                  <TableCell align='center' style={{width: '60px' ,borderRight: "1px solid rgba(224, 224, 224, 1)"}}><RegistButton onClick={()=>handleDelete(row.MaMH)}><DeleteIcon/></RegistButton></TableCell>
+                  <TableCell align='center' style={{width: '80px' ,borderRight: "1px solid rgba(224, 224, 224, 1)"}}><RegistButton onClick={()=>handleDelete(row.MaMH)}><DeleteIcon/></RegistButton></TableCell>
 
                   {/* Thêm các TableCell khác cho các cột */}
                 </TableRow>
@@ -580,7 +580,7 @@ function updateTableData(response) {
                 style={{
                   position: 'absolute',
                   border: '0px solid #380B61', // Viền nằm trong nút
-                  top: '50%',
+                  top: '400px',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
                   backgroundImage: 'url("/gradient.jpg")',
@@ -693,7 +693,7 @@ function updateTableData(response) {
                 style={{
                   position: 'absolute',
                   border: '0px solid #380B61', // Viền nằm trong nút
-                  top: '50%',
+                  top: '400px',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
                   backgroundImage: 'url("/gradient.jpg")',

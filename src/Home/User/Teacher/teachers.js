@@ -5,13 +5,9 @@ import Typography from '@mui/material/Typography'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { useState, useEffect } from 'react';
-import LoginIcon from '@mui/icons-material/Login';
-import SchoolIcon from '@mui/icons-material/School';
-import TextField from '@mui/material/TextField';
 import {useNavigate}  from 'react-router-dom';
 import { styled} from '@mui/material';
 import axios from 'axios'; 
-import Grid from '@mui/material/Grid';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import format from 'date-fns/format';
@@ -19,11 +15,7 @@ import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-// import StudentInfo from './StudentInfo';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Card from '@mui/material/Card';
-import  CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import StarExplosion from './Starbg'
 
 function Teachers()
@@ -63,40 +55,19 @@ function Teachers()
         locales,
     });
 
-    const [events, setEvents] = useState([]);
+    const [events] = useState([]);
 
     // Hàm xử lý khi có sự kiện mới được thêm vào lịch
     const handleSelectEvent = (event) => {
       console.log('Sự kiện mới:', event);
     };
 
-    const eventData = [
-        {
-          title: 'Sự kiện 1',
-          start: new Date(2023, 4, 15, 9, 0),
-          end: new Date(2023, 4, 15, 10, 0),
-        },
-        {
-          title: 'Sự kiện 2',
-          start: new Date(2023, 4, 16, 14, 0),
-          end: new Date(2023, 4, 16, 16, 0),
-        },
-        // Thêm các sự kiện khác vào đây
-      ];
   
-    const handleAddEvent = (event) => {
-        setEvents([...events, event]);
-      };
 
-    const handleHocTap = (e) => {
-        navigate('/home/students/HocTap')
-    }
+
     const handleLichDayHoc = (e) => {
         navigate('/home/teachers/LichDayHoc')
 
-    }
-    const handleCacLopHoc = (e) => {
-        navigate('/home/teachers/DangKiDay')
     }
     const handleTeacherInfo = (e) => {
         navigate('/home/teachers/TeacherInFo')
@@ -196,7 +167,6 @@ function Teachers()
         />
 
       </Box> 
-
       </>
       ) : (
         // Render cảnh báo khi không có StudentUserID

@@ -1,20 +1,15 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { useState, useEffect,useRef } from 'react';
-import LoginIcon from '@mui/icons-material/Login';
-import SchoolIcon from '@mui/icons-material/School';
-import TextField from '@mui/material/TextField';
 import {useNavigate}  from 'react-router-dom';
 import { styled} from '@mui/material';
 import axios from 'axios'; 
 import * as xlsx from 'xlsx';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Grid from '@mui/material/Grid';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -23,9 +18,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Tab } from '@mui/base';
 import GetAppIcon from '@mui/icons-material/GetApp';
-import StarField from './star';
 import StarExplosion from './Starbg'
 import { ScoreChart } from './ScoreChart';
 import { PassScore } from './PassScore';
@@ -157,11 +150,11 @@ function updateTableDataInProgress(inProgressData) {
       {
         DanhGia="B"
       }
-      if (course.finalGrade>=8.5&&course.finalGrade<10)
+      if (course.finalGrade>=8.5&&course.finalGrade<=10)
       {
         DanhGia="A"
       }
-      if (course.finalGrade==null)
+      if (course.finalGrade===null)
       {
         DanhGia="N/A"
       }
@@ -244,7 +237,7 @@ function updateFinishedDataPass(FinishedData) {
       {
         DanhGia="B"
       }
-      if (course.finalGrade>=8.5&&course.finalGrade<10)
+      if (course.finalGrade>=8.5&&course.finalGrade<=10)
       {
         DanhGia="A"
       }
@@ -649,7 +642,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
         </Box>
 
        
-          {TableFlag=='InProgress'&&(
+          {TableFlag==='InProgress'&&(
             <>
               <RegistButton style={{
                 width: '225px', // Độ rộng của Box
@@ -696,7 +689,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
               </>
               )}
 
-          {TableFlag=='FinishedPass'&&(
+          {TableFlag==='FinishedPass'&&(
                     <>
                     <RegistButton style={{              
                               width: '200px', // Độ rộng của Box
@@ -730,7 +723,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
                     </>
               )}
 
-          {TableFlag=='FinishedFail'&&(
+          {TableFlag==='FinishedFail'&&(
                     <>
                     <RegistButton style={{              
                               width: '200px', // Độ rộng của Box
@@ -751,7 +744,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
               )}
       </Stack>
 
-        {TableFlag=='InProgress'&&(
+        {TableFlag==='InProgress'&&(
       <>
       <Box 
       display="flex"
@@ -840,7 +833,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
       </>
       )}
 
-      {TableFlag=='FinishedPass'&&(
+      {TableFlag==='FinishedPass'&&(
         <>
                 <Stack>
                   <Typography variant="h1" gutterBottom></Typography>
@@ -958,7 +951,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
         </>
       )}
 
-      {TableFlag=='FinishedFail'&&(
+      {TableFlag==='FinishedFail'&&(
         <>
       <Box 
       display="flex"
@@ -1016,7 +1009,7 @@ const [TableFlag, setTableFlag]= useState("InProgress");
       )}
 
 
-      {sheetmarkCourse=='true'&&(
+      {sheetmarkCourse==='true'&&(
 
         <>
            <div

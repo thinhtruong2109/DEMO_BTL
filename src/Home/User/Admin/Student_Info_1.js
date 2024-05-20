@@ -417,7 +417,7 @@ const RegistButton = styled (Button)
         <Grid item xs={6}>
           <Box style = {{
             width: '55vw', // Chiếm 70% chiều rộng của viewport
-            height: '70vh', // Chiếm 50% chiều cao của viewport
+            height: '550px', // Chiếm 50% chiều cao của viewport
             fontSize: '1.0rem',
             color: '#380B61',
             backgroundImage: 'url("/gradient8.jpg")',
@@ -520,7 +520,7 @@ const RegistButton = styled (Button)
         <Grid item xs={6}>
         <Box style = {{
             width: '30vw', // Chiếm 30% chiều rộng của viewport
-            height: '30vh', // Chiệm 25% chiều cao của viewport
+            height: '250px', // Chiệm 25% chiều cao của viewport
             fontSize: '1.0rem',
             color: '#380B61',
             backgroundImage: 'url("/gradient8.jpg")',
@@ -549,7 +549,7 @@ const RegistButton = styled (Button)
           </Box>
           <Box style = {{
             width: '30vw', // Chiếm 30% chiều rộng của viewport
-            height: '30vh', // Chiệm 25% chiều cao của viewport
+            height: '250px', // Chiệm 25% chiều cao của viewport
             fontSize: '1.0rem',
             color: '#380B61',
             backgroundImage: 'url("/gradient8.jpg")',
